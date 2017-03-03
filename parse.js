@@ -1,14 +1,20 @@
 let filesystem = require('fs');
 
-  let contentsOfTheFile = filesystem.readFileSync('./simple_data/moving_jan_2016.csv');
+module.exports = function parseTheFiles(csvFile) {
+  let contentsOfTheFile = filesystem.readFileSync(csvFile);
   let stringValue = contentsOfTheFile.toString();
   let rows = stringValue.split('\n');
   let parsedRows = [];
 
   rows.forEach(function printRows(row) {
     let dataRow = row.split(',');
-    parsedRows.push(dataRow);
+    if (row !== '') {
+      parsedRows.push(dataRow);
+    }
 
-});
+  });
+  return parsedRows;
+}
 
-console.log(parsedRows[1][0]);
+
+// console.log(module.exports('./simple_data/parking_feb_2016.csv'));
