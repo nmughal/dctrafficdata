@@ -25,3 +25,21 @@ console.log(printAllTheThings(tickettypes));
 
 // How many different types of parking tickets were issued?
 console.log('There are ' + printAllTheThings(tickettypes) + ' different types of parking tickets issued.');
+
+
+// how can i go through each property in tickettypes, and hold onto the largest value and print it out
+
+let ticketTypeKeys = Object.keys(tickettypes);
+console.log(ticketTypeKeys);
+
+let maxValue = 0;
+let maxValueTicket;
+
+ticketTypeKeys.forEach(function findTheHighestValue(object) {
+  if (tickettypes[object] > maxValue) {
+    maxValue = (tickettypes[object]);
+    maxValueTicket = object;
+  }
+});
+console.log(maxValueTicket);
+console.log(maxValue);
