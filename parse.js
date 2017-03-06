@@ -14,7 +14,4 @@ module.exports = function parseTheFiles(csvFile) {
 
   });
   return parsedRows;
-}
-
-
-// console.log(module.exports('./simple_data/parking_feb_2016.csv'));
+};

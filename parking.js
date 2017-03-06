@@ -24,13 +24,10 @@ function printAllTheThings(object) {
 console.log(printAllTheThings(tickettypes));
 
 // How many different types of parking tickets were issued?
-console.log('There are ' + printAllTheThings(tickettypes) + ' different types of parking tickets issued.');
-
-
-// how can i go through each property in tickettypes, and hold onto the largest value and print it out
+console.log('There were ' + printAllTheThings(tickettypes) + ' different types of parking tickets issued.');
 
 let ticketTypeKeys = Object.keys(tickettypes);
-console.log(ticketTypeKeys);
+// console.log(ticketTypeKeys);
 
 let maxValue = 0;
 let maxValueTicket;
@@ -41,5 +38,48 @@ ticketTypeKeys.forEach(function findTheHighestValue(object) {
     maxValueTicket = object;
   }
 });
-console.log(maxValueTicket);
-console.log(maxValue);
+// console.log(maxValueTicket);
+
+// What was the most common violation type for a parking ticket?
+console.log('The most common violation type for a parking ticket was ' + maxValueTicket + '.');
+
+
+
+let statelicense = {};
+
+parsedData.forEach(function findStateLicense(tickets) {
+    if (statelicense[tickets[12]] === undefined ){
+        statelicense[tickets[12]] = 1;
+    } else {
+      statelicense[tickets[12]] += 1;
+    }
+} );
+
+console.log('Ticket type:', statelicense);
+
+
+function printAllTheThings(licenseObject) {
+  let licenseProperties = Object.keys(licenseObject).length;
+  return licenseProperties;
+}
+
+// How many different types of state license plates
+console.log(printAllTheThings(statelicense));
+
+
+let licenseTypeKeys = Object.keys(statelicense);
+console.log(licenseTypeKeys);
+
+let maxLicenseValue = 0;
+let maxLicenseValueTicket;
+
+licenseTypeKeys.forEach(function findTheHighestValue(licenseObject) {
+  if (statelicense[licenseObject] > maxValue) {
+    maxLicenseValue = (statelicense[licenseObject]);
+    maxLicenseValueTicket = licenseObject;
+  }
+});
+console.log(maxLicenseValueTicket);
+
+//What state license plate gets the most tickets?
+console.log(maxLicenseValueTicket + ' state license plates get the most tickets. ');
